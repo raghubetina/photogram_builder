@@ -1,17 +1,9 @@
 class ApplicationController < ActionController::Base
-  include Graphiti::Rails
-
   before_action :authenticate_user!
 
   # protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  register_exception Graphiti::Errors::RecordNotFound, status: 404
-
-  rescue_from Exception do |e|
-    handle_exception(e)
-  end
 
   protected
 
