@@ -99,7 +99,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
-    resources :comments
     mount VandalUi::Engine, at: '/vandal'
     
     scope module: [:api, :v1] do
@@ -107,6 +106,7 @@ Rails.application.routes.draw do
       resources :likes
       resources :users
       resources :photos
+      resources :comments
     end
   end
 end
